@@ -1,0 +1,11 @@
+Options -Indexes
+
+RewriteEngine on
+
+# Prevent access to specific folder
+RewriteRule ^protected-folder/ - [F]
+
+# Prevent direct access to .php files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
